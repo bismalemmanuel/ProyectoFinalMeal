@@ -1,3 +1,4 @@
+const Meal = require('../models/meal.model');
 const Restaurant = require('../models/restaurant.model');
 const catchAsync = require('../utils/catchAsync');
 
@@ -16,6 +17,7 @@ exports.validIfExistRestaurant = catchAsync(async (req, res, next) => {
   }
 
   req.restaurant = restaurant;
+  req.meal = restaurant.meal;
   next();
 });
 

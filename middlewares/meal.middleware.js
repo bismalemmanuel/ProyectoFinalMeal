@@ -13,6 +13,11 @@ exports.validIfExistMeal = catchAsync(async (req, res, next) => {
       status: true,
       id,
     },
+    include: [
+      {
+        model: Restaurant,
+      },
+    ],
   });
 
   if (!meal) {

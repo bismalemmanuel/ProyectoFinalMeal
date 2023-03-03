@@ -4,6 +4,7 @@ const catchAsync = require('../utils/catchAsync');
 const generateJWT = require('../utils/jwt');
 const Order = require('../models/order.model');
 const Meal = require('../models/meal.model');
+const Restaurant = require('../models/restaurant.model');
 
 exports.createmeal = catchAsync(async (req, res, next) => {
   const { name, price } = req.body;
@@ -26,6 +27,11 @@ exports.findMeals = catchAsync(async (req, res, next) => {
     where: {
       status: true,
     },
+    include: [
+      {
+        model: Restaurant,
+      },
+    ],
   });
 
   res.status(200).json({
